@@ -1,28 +1,5 @@
 {
   "pesananPerKonsumen": {
-    "KIOS AMAR": {
-      "items": [
-        {
-          "barang": "green oil",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 55
-        },
-        {
-          "barang": "buku gambar a4",
-          "jumlah": 1,
-          "satuan": "pak",
-          "harga": 37.5
-        },
-        {
-          "barang": "karter besar",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 25
-        }
-      ],
-      "totalHarga": 117.5
-    },
     "KIOS HARIS": {
       "items": [
         {
@@ -52,17 +29,13 @@
       "sandal yeye seri lusin": 1
     },
     "Toko BL": {
-      "green oil lusin": 1,
-      "karter besar lusin": 1,
       "gosok priuk lusin": 1
     },
     "Toko Apola": {
-      "buku gambar a4 pak": 1,
       "map kertas ping pak": 1
     }
   },
   "daftarKios": [
-    "KIOS HARIS",
-    "KIOS AMAR"
+    "KIOS HARIS"
   ]
 }
