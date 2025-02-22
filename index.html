@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catatan Pesanan Konsumen</title>
+   <style>
+    /* Ganti background body dengan biru muda kehijauan */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #e0f7fa; /* Warna biru muda kehijauan */
+    }
+
+    /* Kotak input dengan bayangan */
+    .input-group input, .input-group select, textarea {
+    margin: 5px;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan */
+    transition: box-shadow 0.3s ease;
+    width: 100%; /* Mengisi lebar parent */
+}
+
+    /* Efek hover pada input */
+    .input-group input:hover, .input-group select:hover, textarea:hover {
+        box-shadow: 0 6px 17px rgba(0, 0, 0, 0.15); /* Bayangan lebih besar saat hover */
+    }
+
+    /* Container catatan konsumen dan toko dengan bayangan */
+    .pesanan-container, .pembelian-container {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 8px;
+        background-color: #ffffff; /* Background putih untuk kontras */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan */
+    }
+
+    /* Tombol dengan bayangan */
+    button {
+        margin: 5px;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff; /* Warna biru default */
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Efek hover pada tombol */
+    button:hover {
+        background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Bayangan lebih besar saat hover */
+    }
+
+    /* Tombol "Salin" dengan background merah terang */
+    .copy-button {
+        background-color: #ff4444; /* Warna merah terang */
+    }
+
+    .copy-button:hover {
+        background-color: #cc0000; /* Warna merah lebih gelap saat hover */
+    }
+
+    /* Scrollable container */
+    .scrollable {
+        max-height: 150px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin-top: 10px;
+        background-color: #f9f9f9;
+        white-space: pre-wrap;
+        border-radius: 4px;
+    }
+
+    /* Header nama konsumen/toko */
+    .nama-header {
+        font-weight: bold;
+        color: maroon;
+        margin-bottom: 10px;
+    }
+
+    /* Warna teks untuk barang dan harga */
+    .nama-barang {
+        font-weight: bold;
+        color: red;
+        text-transform: uppercase;
+    }
+
+    .harga-barang {
+        margin-left: 20px;
+        color: green;
+    }
+
+    /* Total harga */
+    .total-harga {
+        font-weight: bold;
+        margin-top: 10px;
+        border-top: 1px solid #000;
+        padding-top: 5px;
+        color: green;
+    }
+
+    /* Tombol hapus barang */
+    .item-container button {
+        margin-left: 10px;
+        padding: 4px 8px; /* Ukuran padding diperkecil */
+        border: none;
+        border-radius: 4px;
+        background-color: #e0e0e0; /* Warna putih keabu-abuan */
+        color: #333; /* Warna teks gelap */
+        cursor: pointer;
+        font-size: 10px; /* Ukuran font diperkecil */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Efek hover pada tombol hapus */
+    .item-container button:hover {
+        background-color: #a0a0a0; /* Warna abu-abu lebih gelap saat hover */
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Bayangan lebih besar saat hover */
+    }
+
+    /* Tombol "Hapus Semua Catatan" dengan background merah terang */
+    button[onclick="hapusSemuaPesanan()"] {
+        background-color: #ff4444; /* Warna merah terang */
+        color: white; /* Warna teks putih */
+    }
+
+    button[onclick="hapusSemuaPesanan()"]:hover {
+        background-color: #cc0000; /* Warna merah lebih gelap saat hover */
+    }
+    
+/* CSS untuk rekomendasi barang */
+.rekomendasi {
+    position: absolute; /* Posisi absolut agar tidak menggeser elemen lain */
+    background-color: white; /* Latar belakang putih */
+    border: 1px solid #ccc; /* Garis tepi */
+    border-radius: 4px; /* Sudut melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan */
+    max-height: 150px; /* Tinggi maksimal */
+    overflow-y: auto; /* Scroll vertikal */
+    width: calc(100% - 10px); /* Lebar sesuai input barang */
+    z-index: 1000; /* Pastikan rekomendasi muncul di atas elemen lain */
+    margin-top: 5px; /* Jarak dari input barang */
+    display: none; /* Awalnya disembunyikan */
+}
+
+.rekomendasi div {
+    padding: 8px 12px; /* Padding untuk setiap item rekomendasi */
+    cursor: pointer; /* Kursor pointer saat dihover */
+    transition: background-color 0.3s ease; /* Efek hover */
+}
+
+.rekomendasi div:hover {
+    background-color: #f1f1f1; /* Warna latar belakang saat dihover */
+}
+
+.input-group {
+    position: relative; /* Relatif agar rekomendasi bisa diatur posisinya */
+}
+
+</style>
+</head>
+<body>
+
+    <center><h2>PESANAN KONSUMEN</h2></center>
+
+    <div class="input-group">
+        <input type="text" id="namaPemesan" placeholder="Nama Konsumen">
+    </div>
+
+    <div class="input-group">
+    <input type="text" id="inputBarang" placeholder="Ketik nama barang">
+    <div id="rekomendasiBarang" class="rekomendasi"></div>
+</div>
+
+    <div class="input-group">
+        <input type="number" id="jumlah" placeholder="Jumlah" min="0.1" step="0.1">
+    </div>
+
+    <div class="input-group">
+        <select id="satuan">
+            <option value="lusin">Lusin</option>
+            <option value="pak">Pak</option>
+            <option value="rol">Rol</option>
+             <option value="box">Box</option>
+              <option value="bal">Bal</option>
+              <option value="karton">Karton</option>
+              <option value="gros">Gros</option>
+              <option value="toples">Toples</option>
+              <option value="pcs">Pcs</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <input type="number" id="harga" placeholder="Harga (Rp)" min="0">
+    </div>
+
+    <div style="text-align: right;">
+    <button onclick="tambahPesanan()">Tambah Pesanan</button>
+</div>
+
+    <center><h3>NOTA PESANAN KONSUMEN</h3></center>
+    <button onclick="hapusSemuaPesanan()">Hapus Semua Catatan</button>
+    <div id="daftarPesanan"></div>
+
+    <center><h3>DAFTAR SUPLIER</h3></center>
+    <!-- Tombol hapus semua catatan di bagian toko dihapus -->
+    <div id="daftarPembelian"></div>
+    
+    <!-- Tombol Ekspor dan Impor Data -->
+    <div style="text-align: center; margin-top: 20px;">
+        <button onclick="eksporDataLangsungKeGitHub()">Ekspor Data</button>
+        <button onclick="imporDataDariGitHub()">Impor Data</button>
+        <input type="file" id="imporFile" accept=".json" onchange="imporData(event)" style="display: none;">
+    </div>
+
+    <script>
+        let pesananPerKonsumen = JSON.parse(localStorage.getItem("pesananPerKonsumen")) || {};
+        let pembelian = JSON.parse(localStorage.getItem("pembelian")) || { "Toko Saribumi": {}, "Toko BL": {}, "Toko Apola": {} };
+        let daftarKios = JSON.parse(localStorage.getItem("daftarKios")) || [];
+
+        // Database barang
+        const databaseBarang = [
+            "isolasi nasional", "lakban bening 70y", "lakban bening 100y", "lakban coklat 70y", "lakban coklat 100y", "lakban hitam tipis", "lakban hitam goldtape 5cm",  "lakban hitam nachi 5cm",
+"isolasi hitam", "isolasi kertas kecil", "gunting renteng kecil", "gunting renteng sedang", "gunting renteng besar", "isi karter kecil", "isi karter besar",  
+"hakter kecil", "hakter besar", "isi hakter kecil", "isi hakter besar", "paku tendes", "benang jahit mix", "benang jahit hitam", "benang jahit putih",  
+"benang hp", "sisir kecil", "sisir sedang", "sisir besar", "gosok priuk besar", "sikat plastik kecil", "botol dot kecil", "botol dot besar", "jepit pakaian",  
+"karet ventil", "karton putih", "karton ping", "karton biru", "karton hijau", "karton kuning", "folio bergaris", "balon tiup kecil", "balon tiup besar",  
+"tali gitar no1", "tali gitar no2", "tali gitar no3", "tali gitar no4", "tali gitar no5", "tali gitar no6", "gandapura 30ml", "gpu 30ml", "sandal yeye seri",  
+"sandal yeye 9-9.5", "sandal yeye 10-10.5", "sandal swallow hitam", "buku quarto", "buku oktafo", "buku folio", "sandal batleship 7-8",  
+"sandal batleship 8-9", "racun tikus", "buku 26 SA", "spidol snowman permanen", "spidol snowman wb", "lem kertas sedang", "kertas minyak merah",  
+"kertas minyak putih", "kertas minyak kuning", "kertas minyak hijau", "nota 2 play", "buku kwarto", "isolasi bening kecil", "gembok", "pensil alis",  
+"castol super glue", "viva liquit kl", "viva liquit kp", "viva liquit natural", "bedak viva no5", "bedak viva no4", "kayu putih 15ml", "kayu putih 30ml",  
+"bola kecil ukuran 6", "bola sedang ukuran 7", "bola besar ukuran 8", "celengan tong kecil", "celengan tong sedang", "celengan tong besar", "peniti",  
+"kertas hvs a4", "kertas hvs f4", "kayu putih 60ml", "mistar renteng", "jepit lidi kecil", "jepit lidi besar", "celengan ayam sedang", "kelereng",  
+"payung panjang bts", "payung panjang winpu", "pemantik tendes biasa", "frashcare merah", "frashcare oren", "frashcare hijau", "frashcare kuning",  
+"sandal yeye anak hitam 7-8", "pemantik bara", "minyak 1001", "bedak nbk", "air mawar", "susu pembersih bengkuan", "facetonic bengkuan", "celengan bebek kecil",  
+"spidol wb faster", "gunting kuku kecil", "gunting kuku besar", "spidol warna", "pensil warna",  
+"lem kertas kecil", "lem cina", "castol mini", "castol sedang", "castol besar", "gunting kecil", "gunting sedang", "gunting besar", "karter kecil",  
+"karter besar", "jarum jahit", "spon cuci piring", "gosok priuk", "sikat kayu", "sikat plastik besar", "katenbat kecil", "katenbat besar",  
+"tisu kecil isi 6", "tisu travel", "tisu paseo 250", "tisu jolly 250", "kit ban", "kit body", "gatsby merah", "gatsby pomade", "plaster luka",  
+"karet gelang", "minyak 1001 roll on", "london", "green oil", "mistar 30cm plastik", "tipex merah", "peruncing", "penghapus", "pulpen kingsman",  
+"pulpen snowman hitam", "pulpen snowman biru", "pensil 2b montana", "amplop kecil", "amplop besar", "kartu ego", "kartu keris", "salonpas",  
+"miranda hitam", "miranda blacing", "miranda ungu", "miranda merah", "minyak tanco", "peluru usa", "geliga 10g", "geliga 20g", "cukur schick",  
+"baby oil ping", "baby oil biru", "herosin anak", "herosin dewasa kecil", "korek gas", "sabun my baby",  
+"viva pelembab bengkuan", "payung lipat", "payung panjang", "kapur ajaib", "minyak rita hijau", "minyak rita kuning", "orang aring besar",  
+"orang aring kecil", "sikat sepatu", "semir hitop", "tisu basah sedang", "tisu basah besar", "kapas muka", "semir tanco", "sampo cusson campur",  
+"bedak marina padat", "pulpen mx2000", "spidol montana permanen", "miranda abu abu", "miranda oren mc-12",  
+"miranda coklat mc-14", "miranda merah mc-7", "hbd marina ping kecil", "hbd marina hijau kecil", "hbd marina kuning kecil",  
+"hbd marina ungu kecil", "hbd marina oren kecil", "hbd marina ping sedang", "hbd marina hijau sedang", "hbd marina kuning sedang",  
+"hbd marina ungu sedang", "hbd marina oren sedang", "isolasi bening hore", "isolasi kertas 1inc",  
+"isolasi kertas 2inc", "dabel tip 0.5 inc", "dabel tip 1 inc", "dabel tip foam", "lem lilin kecil", "lem lilin besar", "mistar 30cm besi",  
+"map kertas ping", "map kertas biru", "map kertas kuning", "map kertas hijau", "map snal merah", "map snal biru", "map snal kuning",  
+"map snal hijau", "buku gambar a4", "buku gambar a3", "kertas kado boneka", "kertas kado batik", "sampul buku coklat", "sampul buku robot",  
+"sampul buku barby", "kertas krep merah", "kertas krep ping", "kertas krep biru tua", "kertas krep biru muda", "kertas krep kuning",  
+"kertas krep oren", "kertas krep ungu", "kertas krep hijau tua", "kertas krep hijau muda", "kertas krep putih", "kertas origami",  
+"pita merah 0.5inc", "pita ping 0.5inc", "pita oren 0.5inc", "pita hitam 0.5inc", "pita kuning 0.5inc", "pita ungu 0.5inc", "pita putih 0.5inc",  
+"pita hijau 0.5inc", "pita biru 0.5inc", "buku halus", "buku strimin", "krayon pop1", "kwitansi kecil", "kwitansi sedang", "metalik emas",  
+"metalik perak", "metalik merah", "metalik ping", "metalik biru", "metalik hijau", "metalik ungu", "bufalo biru tua", "bufalo biru muda",  
+"bufalo merah", "bufalo ping", "bufalo oren", "bufalo hijau tua", "bufalo hijau muda", "bufalo kuning", "bufalo ungu", "bufalo putih",  
+"bufalo hitam", "penghapus hitam big", "karton hitam", "lem povinal kecil", "lem povinal sedang", "kurap 19", "vitamin rambut butir", "my baby ping 50g", 
+"my baby biru 50g", "my baby kuning 50g",  "my baby ping 100g", "my baby biru 100g", "my baby kuning 100g", "facetonic lemon", "susu pembersih lemon", "lampu led 5 watt", "lampu led 10 watt", "lampu led 15 watt", "lampu led 20 watt", "raket nyamuk", "buku 30 SA", "buku 38 SA", "buku 50 SA", "buku 58 SA", "buku 26 semar", "buku 30 semar", "buku 38 semar", "buku 38 semar", "buku 50 semar", "buku 58 semar", "kertas kado bunga",
+        ];
+
+        const supplierBarang = {
+"buku 26 SA": "Toko Saribumi",
+"buku 30 SA": "Toko Saribumi",
+"buku 38 SA": "Toko Saribumi",
+"buku 50 SA": "Toko Saribumi",
+"buku 58 SA": "Toko Saribumi",
+"buku 26 semar": "Toko Saribumi",
+"buku 30 semar": "Toko Saribumi",
+"buku 38 semar": "Toko Saribumi",
+"buku 50 semar": "Toko Saribumi",
+"buku 58 semar": "Toko Saribumi",
+"lampu led 5 watt": "Toko Saribumi",
+"lampu led 10 watt": "Toko Saribumi",
+"lampu led 15 watt": "Toko Saribumi",
+"lampu led 20 watt": "Toko Saribumi",
+"buku strimin": "Toko Saribumi",
+"buku halus": "Toko Saribumi",
+"dabel tip 0.5 inc": "Toko Saribumi",
+"dabel tip 1 inc": "Toko Saribumi",
+"isolasi nasional": "Toko Saribumi",  
+"lakban bening 70y": "Toko Saribumi",  
+"lakban bening 100y": "Toko Saribumi",  
+"lakban coklat 70y": "Toko Saribumi",  
+"lakban coklat 100y": "Toko Saribumi",  
+"lakban hitam tipis": "Toko Saribumi",  
+"lakban hitam goldtape 5cm": "Toko Saribumi", 
+"lakban hitam nachi 5cm": "Toko Saribumi", 
+"isolasi hitam": "Toko Saribumi",  
+"isolasi kertas kecil": "Toko Saribumi",  
+"gunting renteng kecil": "Toko Saribumi",  
+"gunting renteng sedang": "Toko Saribumi",  
+"gunting renteng besar": "Toko Saribumi",  
+"isi karter kecil": "Toko Saribumi",  
+"isi karter besar": "Toko Saribumi",  
+"hakter kecil": "Toko Saribumi",  
+"hakter besar": "Toko Saribumi",  
+"isi hakter kecil": "Toko Saribumi",  
+"isi hakter besar": "Toko Saribumi",  
+"paku tendes": "Toko Saribumi",  
+"benang jahit mix": "Toko Saribumi",  
+"benang jahit hitam": "Toko Saribumi",  
+"benang jahit putih": "Toko Saribumi",  
+"benang hp": "Toko Saribumi",  
+"sisir kecil": "Toko Saribumi",  
+"sisir sedang": "Toko Saribumi",  
+"sisir besar": "Toko Saribumi",  
+"gosok priuk besar": "Toko Saribumi",  
+"sikat plastik kecil": "Toko Saribumi",  
+"botol dot kecil": "Toko Saribumi",  
+"botol dot besar": "Toko Saribumi",  
+"jepit pakaian": "Toko Saribumi",  
+"karet ventil": "Toko Saribumi",  
+"karton putih": "Toko Saribumi",  
+"karton ping": "Toko Saribumi",  
+"karton biru": "Toko Saribumi",  
+"karton hijau": "Toko Saribumi",  
+"karton kuning": "Toko Saribumi",  
+"folio bergaris": "Toko Saribumi",  
+"balon tiup kecil": "Toko Saribumi",  
+"balon tiup besar": "Toko Saribumi",  
+"tali gitar no1": "Toko Saribumi",  
+"tali gitar no2": "Toko Saribumi",  
+"tali gitar no3": "Toko Saribumi",  
+"tali gitar no4": "Toko Saribumi",  
+"tali gitar no5": "Toko Saribumi",  
+"tali gitar no6": "Toko Saribumi",  
+"gandapura 30ml": "Toko Saribumi",  
+"gpu 30ml": "Toko Saribumi",  
+"sandal yeye seri": "Toko Saribumi",  
+"sandal yeye 9-9.5": "Toko Saribumi",  
+"sandal yeye 10-10.5": "Toko Saribumi",  
+"sandal swallow hitam": "Toko Saribumi",  
+"buku quarto": "Toko Saribumi",  
+"buku oktafo": "Toko Saribumi",  
+"buku folio": "Toko Saribumi",  
+"sandal batleship 7-8": "Toko Saribumi",  
+"sandal batleship 8-9": "Toko Saribumi",  
+"racun tikus": "Toko Saribumi",  
+"buku 26 SA": "Toko Saribumi",  
+"spidol snowman permanen": "Toko Saribumi",  
+"spidol snowman wb": "Toko Saribumi",  
+"lem kertas sedang": "Toko Saribumi",  
+"kertas minyak merah": "Toko Saribumi",  
+"kertas minyak putih": "Toko Saribumi",  
+"kertas minyak kuning": "Toko Saribumi",  
+"kertas minyak hijau": "Toko Saribumi",  
+"nota 2 play": "Toko Saribumi",  
+"buku kwarto": "Toko Saribumi",  
+"isolasi bening kecil": "Toko Saribumi",  
+"gembok": "Toko Saribumi",  
+"pensil alis": "Toko Saribumi",  
+"castol super glue": "Toko Saribumi",  
+"viva liquit kl": "Toko Saribumi",  
+"viva liquit kp": "Toko Saribumi",  
+"viva liquit natural": "Toko Saribumi",  
+"bedak viva no5": "Toko Saribumi",  
+"bedak viva no4": "Toko Saribumi",  
+"kayu putih 15ml": "Toko Saribumi",  
+"kayu putih 30ml": "Toko Saribumi",  
+"bola kecil ukuran 6": "Toko Saribumi",  
+"bola sedang ukuran 7": "Toko Saribumi",  
+"bola besar ukuran 8": "Toko Saribumi",  
+"celengan tong kecil": "Toko Saribumi",  
+"celengan tong sedang": "Toko Saribumi",  
+"celengan tong besar": "Toko Saribumi",  
+"peniti": "Toko Saribumi",  
+"kertas hvs a4": "Toko Saribumi",  
+"kertas hvs f4": "Toko Saribumi",  
+"kayu putih 60ml": "Toko Saribumi",  
+"mistar renteng": "Toko Saribumi",  
+"jepit lidi kecil": "Toko Saribumi",  
+"jepit lidi besar": "Toko Saribumi",  
+"celengan ayam sedang": "Toko Saribumi",  
+"kelereng": "Toko Saribumi",  
+"payung panjang bts": "Toko Saribumi",  
+"payung panjang winpu": "Toko Saribumi",  
+"pemantik tendes biasa": "Toko Saribumi",  
+"frashcare merah": "Toko Saribumi",  
+"frashcare oren": "Toko Saribumi",  
+"frashcare hijau": "Toko Saribumi",  
+"frashcare kuning": "Toko Saribumi",  
+"sandal yeye anak hitam 7-8": "Toko Saribumi",  
+"pemantik bara": "Toko Saribumi",  
+"minyak 1001": "Toko Saribumi",  
+"bedak nbk": "Toko Saribumi",  
+"air mawar": "Toko Saribumi",  
+"susu pembersih bengkuan": "Toko Saribumi",  
+"facetonic bengkuan": "Toko Saribumi",  
+"celengan bebek kecil": "Toko Saribumi",  
+"spidol wb faster": "Toko Saribumi",
+"tonic lemon": "Toko Saribumi",
+"susu pembersih lemon": "Toko Saribumi",
+"raket nyamuk": "Toko Saribumi",
+"kertas kado boneka": "Toko Saribumi",  
+"kertas kado batik": "Toko Saribumi",
+"kertas kado bunga": "Toko Saribumi",
+
+
+"kurap 19": "Toko BL",
+"vitamin rambut butir": "Toko BL",
+"gunting kuku kecil": "Toko BL",  
+"gunting kuku besar": "Toko BL",  
+"spidol warna": "Toko BL",  
+"pensil warna": "Toko BL",  
+"lem kertas kecil": "Toko BL",  
+"lem cina": "Toko BL",  
+"castol mini": "Toko BL",  
+"castol sedang": "Toko BL",  
+"castol besar": "Toko BL",  
+"gunting kecil": "Toko BL",  
+"gunting sedang": "Toko BL",  
+"gunting besar": "Toko BL",  
+"karter kecil": "Toko BL",  
+"karter besar": "Toko BL",  
+"jarum jahit": "Toko BL",  
+"spon cuci piring": "Toko BL",  
+"gosok priuk": "Toko BL",  
+"sikat kayu": "Toko BL",  
+"sikat plastik besar": "Toko BL",  
+"katenbat kecil": "Toko BL",  
+"katenbat besar": "Toko BL",  
+"tisu kecil isi 6": "Toko BL",  
+"tisu travel": "Toko BL",  
+"tisu paseo 250": "Toko BL",  
+"tisu jolly 250": "Toko BL",  
+"kit ban": "Toko BL",  
+"kit body": "Toko BL",  
+"gatsby merah": "Toko BL",  
+"gatsby pomade": "Toko BL",  
+"plaster luka": "Toko BL",  
+"karet gelang": "Toko BL",  
+"minyak 1001 roll on": "Toko BL",  
+"london": "Toko BL",  
+"green oil": "Toko BL",  
+"mistar 30cm plastik": "Toko BL",  
+"tipex merah": "Toko BL",  
+"peruncing": "Toko BL",  
+"penghapus": "Toko BL",  
+"pulpen kingsman": "Toko BL",  
+"pulpen snowman hitam": "Toko BL",  
+"pulpen snowman biru": "Toko BL",  
+"pensil 2b montana": "Toko BL",  
+"amplop kecil": "Toko BL",  
+"amplop besar": "Toko BL",  
+"kartu ego": "Toko BL",  
+"kartu keris": "Toko BL",  
+"salonpas": "Toko BL",  
+"miranda hitam": "Toko BL",  
+"miranda blacing": "Toko BL",  
+"miranda ungu": "Toko BL",  
+"miranda merah": "Toko BL",  
+"minyak tanco": "Toko BL",  
+"peluru usa": "Toko BL",  
+"geliga 10g": "Toko BL",  
+"geliga 20g": "Toko BL",  
+"cukur schick": "Toko BL",  
+"baby oil ping": "Toko BL",  
+"baby oil biru": "Toko BL",  
+"herosin anak": "Toko BL",  
+"herosin dewasa kecil": "Toko BL",  
+"my baby ping 50g": "Toko BL",
+"baby biru 50g": "Toko BL",
+"baby kuning 50g": "Toko BL",
+"my baby ping 100g": "Toko BL",
+"my baby biru 100g": "Toko BL",
+"my baby kuning 100g": "Toko BL",
+"sabun my baby": "Toko BL",  
+"viva pelembab bengkuan": "Toko BL",  
+"payung lipat": "Toko BL",  
+"payung panjang": "Toko BL",  
+"kapur ajaib": "Toko BL",  
+"minyak rita hijau": "Toko BL",  
+"minyak rita kuning": "Toko BL",  
+"orang aring besar": "Toko BL",  
+"orang aring kecil": "Toko BL",  
+"sikat sepatu": "Toko BL",  
+"semir hitop": "Toko BL",  
+"tisu basah sedang": "Toko BL",  
+"tisu basah besar": "Toko BL",  
+"kapas muka": "Toko BL",  
+"semir tanco": "Toko BL",  
+"sampo cusson campur": "Toko BL",  
+"bedak marina padat": "Toko BL",  
+"pulpen mx2000": "Toko BL",  
+"spidol montana permanen": "Toko BL",  
+"bedak my baby sedang": "Toko BL",  
+"miranda abu abu": "Toko BL",  
+"miranda oren mc-12": "Toko BL",  
+"miranda coklat mc-14": "Toko BL",  
+"miranda merah mc-7": "Toko BL",  
+"hbd marina ping kecil": "Toko BL",  
+"hbd marina hijau kecil": "Toko BL",  
+"hbd marina kuning kecil": "Toko BL",  
+"hbd marina ungu kecil": "Toko BL",  
+"hbd marina oren kecil": "Toko BL",  
+"hbd marina ping sedang": "Toko BL",  
+"hbd marina hijau sedang": "Toko BL",  
+"hbd marina kuning sedang": "Toko BL",  
+"hbd marina ungu sedang": "Toko BL",  
+"hbd marina oren sedang": "Toko BL",  
+            
+"isolasi bening hore": "Toko Apola",  
+"isolasi kertas 1inc": "Toko Apola",  
+"isolasi kertas 2inc": "Toko Apola",  
+"dabel tip foam": "Toko Apola",  
+"lem lilin kecil": "Toko Apola",  
+"lem lilin besar": "Toko Apola",  
+"mistar 30cm besi": "Toko Apola",  
+"map kertas ping": "Toko Apola",  
+"map kertas biru": "Toko Apola",  
+"map kertas kuning": "Toko Apola",  
+"map kertas hijau": "Toko Apola",  
+"map snal merah": "Toko Apola",  
+"map snal biru": "Toko Apola",  
+"map snal kuning": "Toko Apola",  
+"map snal hijau": "Toko Apola",  
+"buku gambar a4": "Toko Apola",  
+"buku gambar a3": "Toko Apola",    
+"sampul buku coklat": "Toko Apola",  
+"sampul buku robot": "Toko Apola",  
+"sampul buku barby": "Toko Apola",  
+"kertas krep merah": "Toko Apola",  
+"kertas krep ping": "Toko Apola",  
+"kertas krep biru tua": "Toko Apola",  
+"kertas krep biru muda": "Toko Apola",  
+"kertas krep kuning": "Toko Apola",  
+"kertas krep oren": "Toko Apola",  
+"kertas krep ungu": "Toko Apola",  
+"kertas krep hijau tua": "Toko Apola",  
+"kertas krep hijau muda": "Toko Apola",  
+"kertas krep putih": "Toko Apola",  
+"kertas origami": "Toko Apola",  
+"pita merah 0.5inc": "Toko Apola",  
+"pita ping 0.5inc": "Toko Apola",  
+"pita oren 0.5inc": "Toko Apola",  
+"pita hitam 0.5inc": "Toko Apola",  
+"pita kuning 0.5inc": "Toko Apola",  
+"pita ungu 0.5inc": "Toko Apola",  
+"pita putih 0.5inc": "Toko Apola",  
+"pita hijau 0.5inc": "Toko Apola",  
+"pita biru 0.5inc": "Toko Apola",  
+"pita merah 1inc": "Toko Apola",  
+"pita ping 1inc": "Toko Apola",  
+"pita oren 1inc": "Toko Apola",  
+"pita hitam 1inc": "Toko Apola",  
+"pita kuning 1inc": "Toko Apola",  
+"pita ungu 1inc": "Toko Apola",  
+"pita putih 1inc": "Toko Apola",  
+"pita hijau 1inc": "Toko Apola",  
+"pita biru 1inc": "Toko Apola",
+"krayon pop1": "Toko Apola",  
+"kwitansi kecil": "Toko Apola",  
+"kwitansi sedang": "Toko Apola",  
+"metalik emas": "Toko Apola",  
+"metalik perak": "Toko Apola",  
+"metalik merah": "Toko Apola",  
+"metalik ping": "Toko Apola",  
+"metalik biru": "Toko Apola",  
+"metalik hijau": "Toko Apola",  
+"metalik ungu": "Toko Apola",  
+"bufalo biru tua": "Toko Apola",  
+"bufalo biru muda": "Toko Apola",  
+"bufalo merah": "Toko Apola",  
+"bufalo ping": "Toko Apola",  
+"bufalo oren": "Toko Apola",  
+"bufalo hijau tua": "Toko Apola",  
+"bufalo hijau muda": "Toko Apola",  
+"bufalo kuning": "Toko Apola",  
+"bufalo ungu": "Toko Apola",  
+"bufalo putih": "Toko Apola",  
+"bufalo hitam": "Toko Apola",  
+"penghapus hitam big": "Toko Apola",  
+"karton hitam": "Toko Apola",  
+"lem povinal kecil": "Toko Apola",  
+"lem povinal sedang": "Toko Apola"
+        };
+
+        // Fungsi untuk menampilkan rekomendasi
+        function tampilkanRekomendasi(input) {
+    let rekomendasi = document.getElementById("rekomendasiBarang");
+    rekomendasi.innerHTML = "";
+
+    if (input.length === 0) {
+        rekomendasi.style.display = "none";
+        return;
+    }
+
+    let hasil = databaseBarang.filter(barang => 
+        barang.toLowerCase().includes(input.toLowerCase())
+    );
+
+    if (hasil.length > 0) {
+        hasil.forEach(barang => {
+            let div = document.createElement("div");
+            div.textContent = barang;
+            div.onclick = function () {
+                document.getElementById("inputBarang").value = barang;
+                rekomendasi.style.display = "none";
+            };
+            rekomendasi.appendChild(div);
+        });
+        rekomendasi.style.display = "block"; // Tampilkan rekomendasi
+    } else {
+        rekomendasi.style.display = "none";
+    }
+}
+
+        // Event listener untuk input barang
+        document.getElementById("inputBarang").addEventListener("input", function (e) {
+            tampilkanRekomendasi(e.target.value);
+        });
+
+        function tambahPesanan() {
+            let namaPemesan = document.getElementById("namaPemesan").value.trim();
+            let barang = document.getElementById("inputBarang").value.trim();
+            let jumlah = parseFloat(document.getElementById("jumlah").value);
+            let harga = parseFloat(document.getElementById("harga").value);
+            let satuan = document.getElementById("satuan").value;
+
+            if (!namaPemesan || isNaN(jumlah) || jumlah <= 0 || isNaN(harga) || harga < 0) {
+                alert("Masukkan nama konsumen, jumlah, dan harga yang valid!");
+                return;
+            }
+
+            // Validasi barang
+            if (!databaseBarang.includes(barang)) {
+                alert("Nama barang tidak valid! Silakan pilih dari rekomendasi.");
+                return;
+            }
+
+            if (!pesananPerKonsumen[namaPemesan]) {
+                pesananPerKonsumen[namaPemesan] = { items: [], totalHarga: 0 };
+                // Tambahkan kios baru ke awal array
+                daftarKios.unshift(namaPemesan);
+                localStorage.setItem("daftarKios", JSON.stringify(daftarKios));
+            }
+
+            // Tambahkan item ke daftar pesanan
+            let item = {
+                barang: barang,
+                jumlah: jumlah,
+                satuan: satuan,
+                harga: harga
+            };
+            pesananPerKonsumen[namaPemesan].items.push(item);
+            pesananPerKonsumen[namaPemesan].totalHarga += harga; // Total harga dihitung berdasarkan harga penuh
+
+            localStorage.setItem("pesananPerKonsumen", JSON.stringify(pesananPerKonsumen));
+            updatePesananUI();
+
+            updatePembelian(barang, jumlah, satuan);
+
+            // Kosongkan input setelah berhasil menambahkan pesanan
+            document.getElementById("inputBarang").value = "";
+            document.getElementById("jumlah").value = "";
+            document.getElementById("harga").value = "";
+        }
+
+        function updatePesananUI() {
+            let container = document.getElementById("daftarPesanan");
+            container.innerHTML = "";
+
+            // Tampilkan kios berdasarkan urutan di array daftarKios
+            for (let namaPemesan of daftarKios) {
+                if (!pesananPerKonsumen[namaPemesan]) continue; // Skip jika kios tidak ada
+
+                let div = document.createElement("div");
+                div.classList.add("pesanan-container");
+
+                let title = document.createElement("div");
+                title.classList.add("nama-header");
+                title.textContent = namaPemesan;
+                div.appendChild(title);
+
+                // Container scrollable untuk catatan barang
+                let scrollableDiv = document.createElement("div");
+                scrollableDiv.classList.add("scrollable");
+
+                let nomor = 1; // Penomoran barang
+                for (let item of pesananPerKonsumen[namaPemesan].items) {
+                    let itemDiv = document.createElement("div");
+                    itemDiv.classList.add("item-container");
+
+                    // Baris nama barang dan tombol hapus
+                    let itemBaris = document.createElement("div");
+                    itemBaris.textContent = `${nomor}. ${item.barang}: ${item.jumlah} ${item.satuan}`;
+
+                    // Tombol hapus
+                    let deleteButton = document.createElement("button");
+                    deleteButton.textContent = "❌";
+                    deleteButton.onclick = function () { hapusBarang(namaPemesan, item); };
+                    itemBaris.appendChild(deleteButton);
+
+                    itemDiv.appendChild(itemBaris);
+
+                    // Baris harga
+                    let hargaDiv = document.createElement("div");
+                    hargaDiv.classList.add("harga-barang");
+                    hargaDiv.textContent = `Rp.${item.harga.toFixed(1)}`;
+                    itemDiv.appendChild(hargaDiv);
+
+                    scrollableDiv.appendChild(itemDiv);
+                    nomor++; // Increment nomor
+                }
+
+                div.appendChild(scrollableDiv);
+
+                // Tampilkan total harga
+                let totalHargaDiv = document.createElement("div");
+                totalHargaDiv.classList.add("total-harga");
+                totalHargaDiv.textContent = `Total harga: Rp.${pesananPerKonsumen[namaPemesan].totalHarga.toFixed(1)}`;
+                div.appendChild(totalHargaDiv);
+
+                // Tombol salin catatan
+                let copyButton = document.createElement("button");
+                copyButton.textContent = "Salin";
+                copyButton.onclick = function () { salinCatatan(namaPemesan); };
+                div.appendChild(copyButton);
+
+                container.appendChild(div);
+            }
+        }
+
+        function salinCatatan(konsumen) {
+            let catatan = pesananPerKonsumen[konsumen].items
+                .map((item, i) => `${i + 1}. ${item.barang}: ${item.jumlah} ${item.satuan}\nRp.${item.harga.toFixed(1)}`)
+                .join("\n");
+
+            catatan += `\nTotal harga: Rp.${pesananPerKonsumen[konsumen].totalHarga.toFixed(1)}`;
+
+            salinKeClipboard(catatan);
+        }
+
+        function salinCatatanToko(toko) {
+            let catatan = Object.entries(pembelian[toko])
+                .map(([item, jumlah], i) => {
+                    let lastSpaceIndex = item.lastIndexOf(" ");
+                    let barang = item.substring(0, lastSpaceIndex);  // Semua sebelum spasi terakhir
+                    let satuan = item.substring(lastSpaceIndex + 1); // Setelah spasi terakhir
+                    return `${i + 1}. ${barang}: ${jumlah} ${satuan}`;
+                })
+                .join("\n");
+
+            salinKeClipboard(catatan);
+        }
+
+        function salinKeClipboard(teks) {
+            let textarea = document.createElement("textarea");
+            textarea.value = teks;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand("copy");
+                alert("Catatan telah disalin ke clipboard!");
+            } catch (err) {
+                alert("Gagal menyalin catatan. Silakan salin secara manual.");
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function hapusBarang(konsumen, item) {
+            let kode = prompt(`Masukkan kode "123" untuk menghapus ${item.barang} dari ${konsumen}:`);
+            if (kode === "123") {
+                // Kurangi total harga
+                pesananPerKonsumen[konsumen].totalHarga -= item.harga; // Kurangi harga penuh
+
+                // Hapus item dari daftar pesanan
+                pesananPerKonsumen[konsumen].items = pesananPerKonsumen[konsumen].items.filter(i => i !== item);
+
+                // Jika tidak ada barang lagi untuk konsumen ini, hapus konsumen dari daftar
+                if (pesananPerKonsumen[konsumen].items.length === 0) {
+                    delete pesananPerKonsumen[konsumen];
+                    // Hapus kios dari array daftarKios
+                    daftarKios = daftarKios.filter(kios => kios !== konsumen);
+                    localStorage.setItem("daftarKios", JSON.stringify(daftarKios));
+                }
+
+                localStorage.setItem("pesananPerKonsumen", JSON.stringify(pesananPerKonsumen));
+                updatePesananUI();
+
+                // Gunakan nama barang dan satuan asli
+                let barang = item.barang;
+                let satuan = item.satuan;
+                let toko = supplierBarang[barang];
+                let key = barang + " " + satuan;
+
+                console.log(`Barang: ${barang}, Satuan: ${satuan}, Toko: ${toko}, Key: ${key}`); // Debugging
+
+                // Pastikan barang ditemukan sebelum pengurangan
+                if (toko && pembelian[toko] && pembelian[toko][key] !== undefined) {
+                    console.log(`Sebelum pengurangan: ${pembelian[toko][key]}`); // Debug
+                    pembelian[toko][key] -= item.jumlah;
+                    console.log(`Setelah pengurangan: ${pembelian[toko][key]}`); // Debug
+
+                    if (pembelian[toko][key] <= 0) {
+                        delete pembelian[toko][key];
+                    }
+
+                    localStorage.setItem("pembelian", JSON.stringify(pembelian));
+                    updatePembelianUI();
+                } else {
+                    console.log(`Barang ${key} tidak ditemukan di toko ${toko}`); // Debug
+                }
+            }
+        }
+
+        function hapusSemuaPesanan() {
+            let kode = prompt('Masukkan kode "123456" untuk menghapus semua pesanan:');
+            if (kode === "123456") {
+                // Hapus semua data dari localStorage
+                localStorage.removeItem("pesananPerKonsumen");
+                localStorage.removeItem("pembelian");
+                localStorage.removeItem("daftarKios");
+
+                // Reset variabel
+                pesananPerKonsumen = {};
+                pembelian = { "Toko Saribumi": {}, "Toko BL": {}, "Toko Apola": {} };
+                daftarKios = [];
+
+                // Perbarui tampilan UI
+                updatePesananUI();
+                updatePembelianUI();
+            }
+        }
+
+        function updatePembelian(barang, jumlah, satuan) {
+            let toko = supplierBarang[barang];
+            let key = barang + " " + satuan;
+            pembelian[toko][key] = (pembelian[toko][key] || 0) + jumlah;
+            localStorage.setItem("pembelian", JSON.stringify(pembelian));
+            updatePembelianUI();
+        }
+
+        function updatePembelianUI() {
+            let container = document.getElementById("daftarPembelian");
+            container.innerHTML = "";
+
+            for (let toko in pembelian) {
+                let div = document.createElement("div");
+                div.classList.add("pembelian-container");
+
+                let title = document.createElement("div");
+                title.classList.add("nama-header");
+                title.textContent = toko;
+                div.appendChild(title);
+
+                // Ganti <textarea> dengan <div> yang scrollable
+                let scrollableDiv = document.createElement("div");
+                scrollableDiv.classList.add("scrollable");
+
+                let catatan = Object.entries(pembelian[toko])
+                    .map(([item, jumlah], i) => {
+                        let lastSpaceIndex = item.lastIndexOf(" ");
+                        let barang = item.substring(0, lastSpaceIndex);  // Semua sebelum spasi terakhir
+                        let satuan = item.substring(lastSpaceIndex + 1); // Setelah spasi terakhir
+                        return `${i + 1}. ${barang}: ${jumlah} ${satuan}`;
+                    })
+                    .join("\n");
+
+                scrollableDiv.textContent = catatan;
+                div.appendChild(scrollableDiv);
+
+                // Tombol salin catatan
+                let copyButton = document.createElement("button");
+                copyButton.textContent = "Salin";
+                copyButton.onclick = function () { salinCatatanToko(toko); };
+                div.appendChild(copyButton);
+
+                container.appendChild(div);
+            }
+        }
+        
+// Fungsi untuk ekspor data
+        async function eksporDataLangsungKeGitHub() {
+    const token = "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"; // Jangan hardcode token di frontend!
+    const repoOwner = "Septahadif";
+    const repoName = "web";
+    const filePath = "file.json";
+    const commitMessage = "Update file.json via API";
+
+    const data = {
+        pesananPerKonsumen: JSON.parse(localStorage.getItem("pesananPerKonsumen")) || {},
+        pembelian: JSON.parse(localStorage.getItem("pembelian")) || {},
+        daftarKios: JSON.parse(localStorage.getItem("daftarKios")) || []
+    };
+
+    const jsonData = JSON.stringify(data, null, 2);
+    const encodedContent = btoa(unescape(encodeURIComponent(jsonData))); // Lebih aman untuk karakter non-ASCII
+
+    let sha = null;
+    try {
+        const getFileResponse = await fetch(
+            `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: "application/vnd.github+json",
+                },
+            }
+        );
+
+        if (getFileResponse.ok) {
+            const fileInfo = await getFileResponse.json();
+            sha = fileInfo.sha;
+        } else {
+            console.log("File belum ada, akan dibuat baru.");
+        }
+    } catch (error) {
+        console.log("Gagal mendapatkan SHA file:", error);
+    }
+
+    try {
+        const uploadResponse = await fetch(
+            `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`,
+            {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: "application/vnd.github+json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    message: commitMessage,
+                    content: encodedContent,
+                    sha: sha || undefined, // Hanya tambahkan SHA jika ada
+                }),
+            }
+        );
+
+        const result = await uploadResponse.json();
+        if (uploadResponse.ok) {
+            alert("File berhasil diunggah ke GitHub!");
+            console.log(result);
+        } else {
+            alert("Gagal mengunggah file: " + result.message);
+        }
+    } catch (error) {
+        alert("Terjadi kesalahan: " + error.message);
+    }
+}
+
+        // Fungsi untuk impor data
+        async function imporDataDariGitHub() {
+    const token = "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";
+    const repoOwner = "Septahadif";
+    const repoName = "web";
+    const filePath = "file.json";
+    
+    // Konfirmasi pengaman
+    const konfirmasi = prompt("Masukkan kode keamanan untuk mengimpor data:");
+
+    if (konfirmasi !== "123") {
+        alert("Kode salah. Impor dibatalkan.");
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: "application/vnd.github+json",
+                },
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("File tidak ditemukan atau terjadi kesalahan jaringan.");
+        }
+
+        const fileInfo = await response.json();
+        const content = decodeURIComponent(escape(atob(fileInfo.content))); // Decode dengan aman
+
+        const data = JSON.parse(content);
+
+        localStorage.setItem("pesananPerKonsumen", JSON.stringify(data.pesananPerKonsumen || {}));
+        localStorage.setItem("pembelian", JSON.stringify(data.pembelian || {}));
+        localStorage.setItem("daftarKios", JSON.stringify(data.daftarKios || []));
+
+        updatePesananUI();
+        updatePembelianUI();
+
+        alert("Data berhasil diimpor dari GitHub!");
+        location.reload();
+    } catch (error) {
+        alert("Gagal mengimpor data: " + error.message);
+    }
+}
+
+        updatePesananUI();
+        updatePembelianUI();
+    </script>
+
+</body>
+</html>
