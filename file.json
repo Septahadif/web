@@ -1,9 +1,25 @@
 {
-  "pesananPerKonsumen": {},
+  "pesananPerKonsumen": {
+    "amar": {
+      "items": [
+        {
+          "barang": "karton putih",
+          "jumlah": 1,
+          "satuan": "rol",
+          "harga": 20
+        }
+      ],
+      "totalHarga": 20
+    }
+  },
   "pembelian": {
-    "Toko Saribumi": {},
+    "Toko Saribumi": {
+      "karton putih rol": 1
+    },
     "Toko BL": {},
     "Toko Apola": {}
   },
-  "daftarKios": []
+  "daftarKios": [
+    "amar"
+  ]
 }
