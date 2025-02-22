@@ -45,49 +45,16 @@
         }
       ],
       "totalHarga": 170.5
-    },
-    "KIOS ARRAZAQ": {
-      "items": [
-        {
-          "barang": "isolasi hitam",
-          "jumlah": 2,
-          "satuan": "rol",
-          "harga": 20
-        },
-        {
-          "barang": "baby oil ping",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 120
-        },
-        {
-          "barang": "baby oil biru",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 120
-        },
-        {
-          "barang": "minyak 1001",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 42
-        }
-      ],
-      "totalHarga": 302
     }
   },
   "pembelian": {
     "Toko Saribumi": {
-      "sandal yeye seri lusin": 1,
-      "isolasi hitam rol": 2,
-      "minyak 1001 lusin": 1
+      "sandal yeye seri lusin": 1
     },
     "Toko BL": {
       "green oil lusin": 1,
       "karter besar lusin": 1,
-      "gosok priuk lusin": 1,
-      "baby oil ping lusin": 1,
-      "baby oil biru lusin": 1
+      "gosok priuk lusin": 1
     },
     "Toko Apola": {
       "buku gambar a4 pak": 1,
@@ -95,7 +62,6 @@
     }
   },
   "daftarKios": [
-    "KIOS ARRAZAQ",
     "KIOS HARIS",
     "KIOS AMAR"
   ]
