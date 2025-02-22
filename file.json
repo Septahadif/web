@@ -1,5 +1,19 @@
 {
-  "pesananPerKonsumen": {},
+  "pesananPerKonsumen": {
+    "halo": {
+      "items": [
+        {
+          "barang": "isolasi nasional",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 20
+        }
+      ],
+      "totalHarga": 20
+    }
+  },
   "pembelian": {},
-  "daftarKios": []
+  "daftarKios": [
+    "halo"
+  ]
 }
