@@ -10,16 +10,30 @@
         }
       ],
       "totalHarga": 45
+    },
+    "fyf5": {
+      "items": [
+        {
+          "barang": "kertas kado boneka",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 60
+        }
+      ],
+      "totalHarga": 60
     }
   },
   "pembelian": {
-    "Toko Saribumi": {},
+    "Toko Saribumi": {
+      "kertas kado boneka pak": 1
+    },
     "Toko BL": {
       "tipex merah lusin": 1
     },
     "Toko Apola": {}
   },
   "daftarKios": [
+    "fyf5",
     "amar"
   ]
 }
