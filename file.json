@@ -1,25 +1,9 @@
 {
-  "pesananPerKonsumen": {
-    "amar": {
-      "items": [
-        {
-          "barang": "isolasi nasional",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 90
-        }
-      ],
-      "totalHarga": 90
-    }
-  },
+  "pesananPerKonsumen": {},
   "pembelian": {
-    "Toko Saribumi": {
-      "isolasi nasional lusin": 1
-    },
+    "Toko Saribumi": {},
     "Toko BL": {},
     "Toko Apola": {}
   },
-  "daftarKios": [
-    "amar"
-  ]
+  "daftarKios": []
 }
