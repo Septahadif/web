@@ -1,41 +1,5 @@
 {
-  "pesananPerKonsumen": {
-    "KIOS HARIS": {
-      "items": [
-        {
-          "barang": "map kertas ping",
-          "jumlah": 1,
-          "satuan": "pak",
-          "harga": 35
-        },
-        {
-          "barang": "gosok priuk",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 23.5
-        },
-        {
-          "barang": "sandal yeye seri",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 112
-        }
-      ],
-      "totalHarga": 170.5
-    }
-  },
-  "pembelian": {
-    "Toko Saribumi": {
-      "sandal yeye seri lusin": 1
-    },
-    "Toko BL": {
-      "gosok priuk lusin": 1
-    },
-    "Toko Apola": {
-      "map kertas ping pak": 1
-    }
-  },
-  "daftarKios": [
-    "KIOS HARIS"
-  ]
+  "pesananPerKonsumen": {},
+  "pembelian": {},
+  "daftarKios": []
 }
