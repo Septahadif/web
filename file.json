@@ -7,21 +7,13 @@
           "jumlah": 1,
           "satuan": "lusin",
           "harga": 45
-        },
-        {
-          "barang": "isi karter besar",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 25
         }
       ],
-      "totalHarga": 70
+      "totalHarga": 45
     }
   },
   "pembelian": {
-    "Toko Saribumi": {
-      "isi karter besar lusin": 1
-    },
+    "Toko Saribumi": {},
     "Toko BL": {
       "tipex merah lusin": 1
     },
