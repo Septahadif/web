@@ -3,20 +3,28 @@
     "amar": {
       "items": [
         {
-          "barang": "karton putih",
+          "barang": "tipex merah",
           "jumlah": 1,
-          "satuan": "rol",
-          "harga": 20
+          "satuan": "lusin",
+          "harga": 45
+        },
+        {
+          "barang": "isi karter besar",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 25
         }
       ],
-      "totalHarga": 20
+      "totalHarga": 70
     }
   },
   "pembelian": {
     "Toko Saribumi": {
-      "karton putih rol": 1
+      "isi karter besar lusin": 1
     },
-    "Toko BL": {},
+    "Toko BL": {
+      "tipex merah lusin": 1
+    },
     "Toko Apola": {}
   },
   "daftarKios": [
