@@ -21,6 +21,17 @@
         }
       ],
       "totalHarga": 60
+    },
+    "hr5rf": {
+      "items": [
+        {
+          "barang": "map kertas ping",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 40
+        }
+      ],
+      "totalHarga": 40
     }
   },
   "pembelian": {
@@ -30,9 +41,12 @@
     "Toko BL": {
       "tipex merah lusin": 1
     },
-    "Toko Apola": {}
+    "Toko Apola": {
+      "map kertas ping lusin": 1
+    }
   },
   "daftarKios": [
+    "hr5rf",
     "fyf5",
     "amar"
   ]
