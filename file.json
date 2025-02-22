@@ -1,1 +1,127 @@
-
+{
+  "pesananPerKonsumen": {
+    "KIOS AMAR": {
+      "items": [
+        {
+          "barang": "green oil",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 55
+        },
+        {
+          "barang": "buku gambar a4",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 37.5
+        },
+        {
+          "barang": "karter besar",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 25
+        }
+      ],
+      "totalHarga": 117.5
+    },
+    "KIOS HARIS": {
+      "items": [
+        {
+          "barang": "map kertas ping",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 35
+        },
+        {
+          "barang": "gosok priuk",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 23.5
+        },
+        {
+          "barang": "sandal yeye seri",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 112
+        }
+      ],
+      "totalHarga": 170.5
+    },
+    "KIOS ARRAZAQ": {
+      "items": [
+        {
+          "barang": "isolasi hitam",
+          "jumlah": 2,
+          "satuan": "rol",
+          "harga": 20
+        },
+        {
+          "barang": "baby oil ping",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 120
+        },
+        {
+          "barang": "baby oil biru",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 120
+        },
+        {
+          "barang": "minyak 1001",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 42
+        }
+      ],
+      "totalHarga": 302
+    },
+    "kios akbar": {
+      "items": [
+        {
+          "barang": "isolasi nasional",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 90
+        }
+      ],
+      "totalHarga": 90
+    },
+    "kios": {
+      "items": [
+        {
+          "barang": "isolasi nasional",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 30
+        }
+      ],
+      "totalHarga": 30
+    }
+  },
+  "pembelian": {
+    "Toko Saribumi": {
+      "sandal yeye seri lusin": 1,
+      "isolasi hitam rol": 2,
+      "minyak 1001 lusin": 1,
+      "isolasi nasional lusin": 2
+    },
+    "Toko BL": {
+      "green oil lusin": 1,
+      "karter besar lusin": 1,
+      "gosok priuk lusin": 1,
+      "baby oil ping lusin": 1,
+      "baby oil biru lusin": 1
+    },
+    "Toko Apola": {
+      "buku gambar a4 pak": 1,
+      "map kertas ping pak": 1
+    }
+  },
+  "daftarKios": [
+    "kios",
+    "kios akbar",
+    "KIOS ARRAZAQ",
+    "KIOS HARIS",
+    "KIOS AMAR"
+  ]
+}
