@@ -74,36 +74,13 @@
         }
       ],
       "totalHarga": 302
-    },
-    "kios akbar": {
-      "items": [
-        {
-          "barang": "isolasi nasional",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 90
-        }
-      ],
-      "totalHarga": 90
-    },
-    "kios": {
-      "items": [
-        {
-          "barang": "isolasi nasional",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 30
-        }
-      ],
-      "totalHarga": 30
     }
   },
   "pembelian": {
     "Toko Saribumi": {
       "sandal yeye seri lusin": 1,
       "isolasi hitam rol": 2,
-      "minyak 1001 lusin": 1,
-      "isolasi nasional lusin": 2
+      "minyak 1001 lusin": 1
     },
     "Toko BL": {
       "green oil lusin": 1,
@@ -118,8 +95,6 @@
     }
   },
   "daftarKios": [
-    "kios",
-    "kios akbar",
     "KIOS ARRAZAQ",
     "KIOS HARIS",
     "KIOS AMAR"
