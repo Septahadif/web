@@ -1,5 +1,9 @@
 {
   "pesananPerKonsumen": {},
-  "pembelian": {},
+  "pembelian": {
+    "Toko Saribumi": {},
+    "Toko BL": {},
+    "Toko Apola": {}
+  },
   "daftarKios": []
 }
