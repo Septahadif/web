@@ -1,9 +1,25 @@
 {
-  "pesananPerKonsumen": {},
+  "pesananPerKonsumen": {
+    "amar": {
+      "items": [
+        {
+          "barang": "tipex merah",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 45
+        }
+      ],
+      "totalHarga": 45
+    }
+  },
   "pembelian": {
     "Toko Saribumi": {},
-    "Toko BL": {},
+    "Toko BL": {
+      "tipex merah lusin": 1
+    },
     "Toko Apola": {}
   },
-  "daftarKios": []
+  "daftarKios": [
+    "amar"
+  ]
 }
