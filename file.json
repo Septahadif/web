@@ -1,25 +1,559 @@
 {
   "pesananPerKonsumen": {
-    "amar": {
+    "KIOS FAIKAH": {
       "items": [
         {
-          "barang": "tipex merah",
+          "barang": "dabel tip 1 inc",
           "jumlah": 1,
           "satuan": "lusin",
-          "harga": 45
+          "harga": 70
+        },
+        {
+          "barang": "payung panjang",
+          "jumlah": 0.5,
+          "satuan": "lusin",
+          "harga": 175
         }
       ],
-      "totalHarga": 45
+      "totalHarga": 245
+    },
+    "KIOS PUTRI": {
+      "items": [
+        {
+          "barang": "vitamin rambut butir",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 98
+        },
+        {
+          "barang": "geliga 10g",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 60
+        },
+        {
+          "barang": "geliga 20g",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 110
+        }
+      ],
+      "totalHarga": 268
+    },
+    "KIOS BAHAGIA": {
+      "items": [
+        {
+          "barang": "isi hakter kecil",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 20
+        },
+        {
+          "barang": "buku 26 SA",
+          "jumlah": 5,
+          "satuan": "pak",
+          "harga": 75
+        },
+        {
+          "barang": "buku 50 SA",
+          "jumlah": 3,
+          "satuan": "pak",
+          "harga": 75
+        },
+        {
+          "barang": "celengan tong kecil",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 42
+        },
+        {
+          "barang": "celengan tong besar",
+          "jumlah": 0.5,
+          "satuan": "lusin",
+          "harga": 90
+        },
+        {
+          "barang": "celengan tong sedang",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 65
+        }
+      ],
+      "totalHarga": 367
+    },
+    "KIOS GIFAR": {
+      "items": [
+        {
+          "barang": "spidol warna",
+          "jumlah": 1,
+          "satuan": "gros",
+          "harga": 55
+        },
+        {
+          "barang": "isi hakter kecil",
+          "jumlah": 2,
+          "satuan": "pak",
+          "harga": 40
+        },
+        {
+          "barang": "gosok priuk besar",
+          "jumlah": 2,
+          "satuan": "lusin",
+          "harga": 90
+        },
+        {
+          "barang": "lem lilin kecil",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 20
+        },
+        {
+          "barang": "karet ventil",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 65
+        },
+        {
+          "barang": "celengan tong kecil",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 42
+        },
+        {
+          "barang": "celengan tong sedang",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 65
+        }
+      ],
+      "totalHarga": 377
+    },
+    "KIOS DIMENSI": {
+      "items": [
+        {
+          "barang": "sandal swallow hitam",
+          "jumlah": 18,
+          "satuan": "lusin",
+          "harga": 2115
+        }
+      ],
+      "totalHarga": 2115
+    },
+    "KIOS FIRGA": {
+      "items": [
+        {
+          "barang": "baby oil biru",
+          "jumlah": 0.5,
+          "satuan": "lusin",
+          "harga": 70
+        },
+        {
+          "barang": "baby oil ping",
+          "jumlah": 0.5,
+          "satuan": "lusin",
+          "harga": 70
+        },
+        {
+          "barang": "frashcare merah",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 145
+        },
+        {
+          "barang": "geliga 10g",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 60
+        },
+        {
+          "barang": "semir hitop",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 140
+        },
+        {
+          "barang": "peluru usa",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 210
+        }
+      ],
+      "totalHarga": 695
+    },
+    "KIOS 3 PUTRA": {
+      "items": [
+        {
+          "barang": "balon tiup kecil",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 75
+        },
+        {
+          "barang": "buku gambar a4",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 37
+        },
+        {
+          "barang": "celengan tong kecil",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 42
+        },
+        {
+          "barang": "celengan tong sedang",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 65
+        },
+        {
+          "barang": "buku strimin",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 35
+        },
+        {
+          "barang": "kapur ajaib",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 30
+        },
+        {
+          "barang": "kelereng",
+          "jumlah": 10,
+          "satuan": "pak",
+          "harga": 65
+        }
+      ],
+      "totalHarga": 349
+    },
+    "KIOS ANGGI": {
+      "items": [
+        {
+          "barang": "buku 26 semar",
+          "jumlah": 15,
+          "satuan": "pak",
+          "harga": 225
+        }
+      ],
+      "totalHarga": 225
+    },
+    "KIOS INDAH": {
+      "items": [
+        {
+          "barang": "lem kertas kecil",
+          "jumlah": 1,
+          "satuan": "box",
+          "harga": 20
+        },
+        {
+          "barang": "buku 26 SA",
+          "jumlah": 1,
+          "satuan": "karton",
+          "harga": 723
+        },
+        {
+          "barang": "buku kwarto",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 62.5
+        },
+        {
+          "barang": "kwitansi kecil",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 35
+        },
+        {
+          "barang": "sandal swallow hitam",
+          "jumlah": 3,
+          "satuan": "lusin",
+          "harga": 375
+        },
+        {
+          "barang": "sandal yeye 10-10.5",
+          "jumlah": 2,
+          "satuan": "lusin",
+          "harga": 230
+        },
+        {
+          "barang": "sisir besar",
+          "jumlah": 2,
+          "satuan": "lusin",
+          "harga": 40
+        },
+        {
+          "barang": "karet ventil",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 65
+        },
+        {
+          "barang": "kapas muka",
+          "jumlah": 1,
+          "satuan": "bal",
+          "harga": 60
+        },
+        {
+          "barang": "bola 8",
+          "jumlah": 2,
+          "satuan": "lusin",
+          "harga": 240
+        },
+        {
+          "barang": "nota 3 play",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 55
+        }
+      ],
+      "totalHarga": 1905.5
+    },
+    "KIOS ALDI": {
+      "items": [
+        {
+          "barang": "sikat plastik besar",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 42
+        },
+        {
+          "barang": "gunting kuku kecil",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 35
+        },
+        {
+          "barang": "gembok",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 60
+        },
+        {
+          "barang": "kartu ego",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 50
+        }
+      ],
+      "totalHarga": 187
+    },
+    "KIOS ANUGRAH 1": {
+      "items": [
+        {
+          "barang": "green oil",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 55
+        },
+        {
+          "barang": "pulpen snowman hitam",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 20
+        },
+        {
+          "barang": "pulpen snowman biru",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 20
+        },
+        {
+          "barang": "amplop kecil",
+          "jumlah": 2,
+          "satuan": "pak",
+          "harga": 54
+        },
+        {
+          "barang": "baby oil ping",
+          "jumlah": 0.5,
+          "satuan": "lusin",
+          "harga": 70
+        },
+        {
+          "barang": "air mawar",
+          "jumlah": 0.5,
+          "satuan": "lusin",
+          "harga": 35
+        },
+        {
+          "barang": "kayu putih 15ml",
+          "jumlah": 0.5,
+          "satuan": "lusin",
+          "harga": 37
+        },
+        {
+          "barang": "plaster luka",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 35
+        },
+        {
+          "barang": "gatsby merah",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 27
+        }
+      ],
+      "totalHarga": 353
+    },
+    "KIOS DIVA LOVE": {
+      "items": [
+        {
+          "barang": "baby oil biru",
+          "jumlah": 0.5,
+          "satuan": "lusin",
+          "harga": 70
+        },
+        {
+          "barang": "payung panjang",
+          "jumlah": 0.5,
+          "satuan": "lusin",
+          "harga": 175
+        },
+        {
+          "barang": "kapas muka collection",
+          "jumlah": 1,
+          "satuan": "bal",
+          "harga": 75
+        }
+      ],
+      "totalHarga": 320
+    },
+    "KIOS LORI": {
+      "items": [
+        {
+          "barang": "buku 26 SA",
+          "jumlah": 2,
+          "satuan": "pak",
+          "harga": 30
+        },
+        {
+          "barang": "isolasi hitam",
+          "jumlah": 1,
+          "satuan": "rol",
+          "harga": 10
+        },
+        {
+          "barang": "isolasi bening kecil",
+          "jumlah": 1,
+          "satuan": "rol",
+          "harga": 12
+        },
+        {
+          "barang": "kertas kado boneka",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 20
+        }
+      ],
+      "totalHarga": 72
+    },
+    "KIOS BINTANG MOTOR": {
+      "items": [
+        {
+          "barang": "tisu kecil isi 6",
+          "jumlah": 3,
+          "satuan": "pak",
+          "harga": 19.5
+        },
+        {
+          "barang": "kartu keris",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 65
+        },
+        {
+          "barang": "botol dot kecil",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 55
+        },
+        {
+          "barang": "nona mas",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 220
+        }
+      ],
+      "totalHarga": 359.5
     }
   },
   "pembelian": {
-    "Toko Saribumi": {},
-    "Toko BL": {
-      "tipex merah lusin": 1
+    "Toko Saribumi": {
+      "dabel tip 1 inc lusin": 1,
+      "isi hakter kecil pak": 3,
+      "buku 26 SA pak": 7,
+      "buku 50 SA pak": 3,
+      "celengan tong kecil lusin": 3,
+      "celengan tong besar lusin": 0.5,
+      "celengan tong sedang lusin": 3,
+      "gosok priuk besar lusin": 2,
+      "karet ventil pak": 2,
+      "sandal swallow hitam lusin": 21,
+      "frashcare merah lusin": 1,
+      "balon tiup kecil pak": 1,
+      "buku strimin pak": 1,
+      "kelereng pak": 10,
+      "buku 26 semar pak": 15,
+      "buku 26 SA karton": 1,
+      "buku kwarto pak": 1,
+      "sandal yeye 10-10.5 lusin": 2,
+      "sisir besar lusin": 2,
+      "gembok lusin": 1,
+      "air mawar lusin": 0.5,
+      "kayu putih 15ml lusin": 0.5,
+      "isolasi hitam rol": 1,
+      "isolasi bening kecil rol": 1,
+      "kertas kado boneka lusin": 1,
+      "botol dot kecil lusin": 1,
+      "kapas muka collection bal": 1,
+      "bola 8 lusin": 2
     },
-    "Toko Apola": {}
+    "Toko BL": {
+      "payung panjang lusin": 1,
+      "vitamin rambut butir pak": 1,
+      "geliga 10g lusin": 2,
+      "geliga 20g lusin": 1,
+      "spidol warna gros": 1,
+      "baby oil biru lusin": 1,
+      "baby oil ping lusin": 1,
+      "semir hitop lusin": 1,
+      "kapur ajaib pak": 1,
+      "lem kertas kecil box": 1,
+      "kapas muka bal": 1,
+      "sikat plastik besar lusin": 1,
+      "gunting kuku kecil lusin": 1,
+      "green oil lusin": 1,
+      "pulpen snowman hitam lusin": 1,
+      "pulpen snowman biru lusin": 1,
+      "amplop kecil pak": 2,
+      "plaster luka pak": 1,
+      "gatsby merah pak": 1,
+      "tisu kecil isi 6 pak": 3,
+      "nona mas lusin": 1,
+      "peluru usa pak": 1
+    },
+    "Toko Apola": {
+      "lem lilin kecil lusin": 1,
+      "buku gambar a4 pak": 1,
+      "kwitansi kecil pak": 1
+    }
   },
   "daftarKios": [
-    "amar"
+    "KIOS BINTANG MOTOR",
+    "KIOS LORI",
+    "KIOS DIVA LOVE",
+    "KIOS ANUGRAH 1",
+    "KIOS ALDI",
+    "KIOS INDAH",
+    "KIOS ANGGI",
+    "KIOS 3 PUTRA",
+    "KIOS FIRGA",
+    "KIOS DIMENSI",
+    "KIOS GIFAR",
+    "KIOS BAHAGIA",
+    "KIOS PUTRI",
+    "KIOS FAIKAH"
   ]
 }
