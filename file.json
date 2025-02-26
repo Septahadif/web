@@ -67,19 +67,19 @@
           "harga": 42
         },
         {
-          "barang": "celengan tong besar",
-          "jumlah": 0.5,
-          "satuan": "lusin",
-          "harga": 90
-        },
-        {
           "barang": "celengan tong sedang",
           "jumlah": 1,
           "satuan": "lusin",
           "harga": 65
+        },
+        {
+          "barang": "celengan tong besar",
+          "jumlah": 0.5,
+          "satuan": "lusin",
+          "harga": 50
         }
       ],
-      "totalHarga": 367
+      "totalHarga": 327
     },
     "KIOS GIFAR": {
       "items": [
@@ -108,12 +108,6 @@
           "harga": 20
         },
         {
-          "barang": "karet ventil",
-          "jumlah": 1,
-          "satuan": "pak",
-          "harga": 65
-        },
-        {
           "barang": "celengan tong kecil",
           "jumlah": 1,
           "satuan": "lusin",
@@ -123,6 +117,12 @@
           "barang": "celengan tong sedang",
           "jumlah": 1,
           "satuan": "lusin",
+          "harga": 65
+        },
+        {
+          "barang": "karet ventil merah",
+          "jumlah": 1,
+          "satuan": "pak",
           "harga": 65
         }
       ],
@@ -173,7 +173,7 @@
         },
         {
           "barang": "peluru usa",
-          "jumlah": 1,
+          "jumlah": 3,
           "satuan": "pak",
           "harga": 210
         }
@@ -283,12 +283,6 @@
           "harga": 40
         },
         {
-          "barang": "karet ventil",
-          "jumlah": 1,
-          "satuan": "pak",
-          "harga": 65
-        },
-        {
           "barang": "kapas muka",
           "jumlah": 1,
           "satuan": "bal",
@@ -304,10 +298,16 @@
           "barang": "nota 3 play",
           "jumlah": 1,
           "satuan": "pak",
-          "harga": 55
+          "harga": 60
+        },
+        {
+          "barang": "karet ventil merah",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 65
         }
       ],
-      "totalHarga": 1905.5
+      "totalHarga": 1910.5
     },
     "KIOS ALDI": {
       "items": [
@@ -458,12 +458,6 @@
           "harga": 19.5
         },
         {
-          "barang": "kartu keris",
-          "jumlah": 1,
-          "satuan": "lusin",
-          "harga": 65
-        },
-        {
           "barang": "botol dot kecil",
           "jumlah": 1,
           "satuan": "lusin",
@@ -474,9 +468,80 @@
           "jumlah": 1,
           "satuan": "lusin",
           "harga": 220
+        },
+        {
+          "barang": "kartu keris",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 65
         }
       ],
       "totalHarga": 359.5
+    },
+    "KIOS ADITYA": {
+      "items": [
+        {
+          "barang": "tisu jolly 250",
+          "jumlah": 2,
+          "satuan": "bal",
+          "harga": 76
+        },
+        {
+          "barang": "tisu travel",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 35
+        },
+        {
+          "barang": "lem cina",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 70
+        },
+        {
+          "barang": "buku 30 SA",
+          "jumlah": 2,
+          "satuan": "pak",
+          "harga": 31
+        },
+        {
+          "barang": "buku 50 SA",
+          "jumlah": 2,
+          "satuan": "pak",
+          "harga": 50
+        },
+        {
+          "barang": "buku 26 semar",
+          "jumlah": 2,
+          "satuan": "pak",
+          "harga": 30
+        },
+        {
+          "barang": "isolasi bening hore",
+          "jumlah": 1,
+          "satuan": "rol",
+          "harga": 20
+        },
+        {
+          "barang": "gunting sedang",
+          "jumlah": 0.5,
+          "satuan": "lusin",
+          "harga": 37.5
+        },
+        {
+          "barang": "folio bergaris",
+          "jumlah": 1,
+          "satuan": "pak",
+          "harga": 32.5
+        },
+        {
+          "barang": "kartu ego",
+          "jumlah": 1,
+          "satuan": "lusin",
+          "harga": 50
+        }
+      ],
+      "totalHarga": 432
     }
   },
   "pembelian": {
@@ -484,18 +549,16 @@
       "dabel tip 1 inc lusin": 1,
       "isi hakter kecil pak": 3,
       "buku 26 SA pak": 7,
-      "buku 50 SA pak": 3,
+      "buku 50 SA pak": 5,
       "celengan tong kecil lusin": 3,
-      "celengan tong besar lusin": 0.5,
       "celengan tong sedang lusin": 3,
       "gosok priuk besar lusin": 2,
-      "karet ventil pak": 2,
       "sandal swallow hitam lusin": 21,
       "frashcare merah lusin": 1,
       "balon tiup kecil pak": 1,
       "buku strimin pak": 1,
       "kelereng pak": 10,
-      "buku 26 semar pak": 15,
+      "buku 26 semar pak": 17,
       "buku 26 SA karton": 1,
       "buku kwarto pak": 1,
       "sandal yeye 10-10.5 lusin": 2,
@@ -508,7 +571,11 @@
       "kertas kado boneka lusin": 1,
       "botol dot kecil lusin": 1,
       "kapas muka collection bal": 1,
-      "bola 8 lusin": 2
+      "bola 8 lusin": 2,
+      "celengan tong besar lusin": 0.5,
+      "karet ventil merah pak": 2,
+      "buku 30 SA pak": 2,
+      "folio bergaris pak": 1
     },
     "Toko BL": {
       "payung panjang lusin": 1,
@@ -532,15 +599,24 @@
       "gatsby merah pak": 1,
       "tisu kecil isi 6 pak": 3,
       "nona mas lusin": 1,
-      "peluru usa pak": 1
+      "peluru usa pak": 3,
+      "tisu jolly 250 bal": 2,
+      "tisu travel lusin": 1,
+      "lem cina lusin": 1,
+      "gunting sedang lusin": 0.5,
+      "kartu keris lusin": 1,
+      "kartu ego lusin": 2
     },
     "Toko Apola": {
       "lem lilin kecil lusin": 1,
       "buku gambar a4 pak": 1,
-      "kwitansi kecil pak": 1
+      "kwitansi kecil pak": 1,
+      "nota 3 play pak": 1,
+      "isolasi bening hore rol": 1
     }
   },
   "daftarKios": [
+    "KIOS ADITYA",
     "KIOS BINTANG MOTOR",
     "KIOS LORI",
     "KIOS DIVA LOVE",
